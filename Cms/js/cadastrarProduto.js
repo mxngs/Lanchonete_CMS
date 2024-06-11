@@ -39,9 +39,9 @@ cadastrar.addEventListener('click', ()=>{
     const fotoInput = foto.value
     const tabelaNutricionalInput = tabela_nutricional.value
     const quantidadeInput = quantidade.value
-    const descricaoInput = descricao.src
-    const categoriaInput = categoria.src
-    const ingredientesInput = ingredientes.src
+    const descricaoInput = descricao.value
+    const categoriaInput = categorias.value
+    const ingredientesInput = ingredientes.value
     
 
     const insert ={

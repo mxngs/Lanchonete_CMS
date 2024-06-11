@@ -31,7 +31,7 @@ export async function getProduto(id){
     return data.produto[0]
 }
 export async function postProduto(produto){
-    const url = ''
+    const url = 'http://localhost:8080/v1/lanchonete/produto'
     const options = {
         method: 'POST',
         headers: {
