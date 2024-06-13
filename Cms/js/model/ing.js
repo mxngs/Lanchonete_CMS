@@ -33,3 +33,17 @@ export async function getUsuario(id) {
     const data = await response.json()
     return data.usuario
 }
+export async function putProduto(id, dados) {
+    console.log(id);
+    console.log(dados);
+    const url = `http://localhost:8080/v1/lanchonete/produto/${id}`
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dados)
+    }
+    const response = await fetch(url, options)
+    return response.ok
+}

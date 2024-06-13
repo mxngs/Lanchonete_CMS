@@ -1,78 +1,87 @@
+'use strict';
+import { postProduto, getCategorias, getIngredientes } from "./main.js";
 
-'use strict'
-import {postProduto, getCategorias, getIngredientes} from "./main.js"
+const nome = document.getElementById('nome');
+const valor = document.getElementById('valor');
+const foto = document.getElementById('foto');
+const tabela_nutricional = document.getElementById('tabela_nutricional');
+const quantidade = document.getElementById('quantidade');
+const cadastrar = document.getElementById('cadastrar');
+const descricao = document.getElementById('descricao');
+const categorias = document.getElementById('categoria');
+const ingredientes = document.getElementById('ingredientes');
 
+const criarCategoria = (cat) => {
+    const categoria = document.createElement('option');
+    categoria.value = cat.id_categoria; // Aqui atribuímos o ID como valor
+    categoria.textContent = cat.nome;
+    return categoria;
+};
 
-// Import das tags do HTML pelo ID
-const nome = document.getElementById('nome')
-const valor = document.getElementById('valor')
-const foto = document.getElementById('foto')
-const tabela_nutricional = document.getElementById('tabela_nutricional')
-const quantidade = document.getElementById('quantidade')
-const cadastrar = document.getElementById('cadastrar')
-const descricao = document.getElementById('descricao')
-const categoria = document.getElementById('categoria')
-const ingredientes = document.getElementById('ingredientes')
+const criarIngrediente = (ing) => {
+    const ingrediente = document.createElement('option');
+    ingrediente.value = ing.id_ingrediente; // Aqui atribuímos o ID como valor
+    ingrediente.textContent = ing.nome;
+    return ingrediente;
+};
 
-const criarCategoria = (cat) =>{
-    const categoria = document.createElement('option')
-    categoria.value = cat.nome
-    categoria.id = cat.id_categoria
-    categoria.textContent = cat.nome
-
-    return categoria
+cadastrar.addEventListener('click', () => {
+    const categoriasIn = [];
+for (let i = 0; i < categorias.options.length; i++) {
+    if (categorias.options[i].selected) {
+        categoriasIn.push(parseInt(categorias.options[i].value));
+    }
 }
-const criarIngrediente = (ing) =>{
-    const ingrediente = document.createElement('option')
-    ingrediente.value = ing.nome
-    ingrediente.id = ing.id_ingrediente
-    ingrediente.textContent = ing.nome
 
-    return ingrediente
+// Obter os IDs dos ingredientes selecionados
+const ingredientesIn = [];
+for (let i = 0; i < ingredientes.options.length; i++) {
+    if (ingredientes.options[i].selected) {
+        ingredientesIn.push(parseInt(ingredientes.options[i].value));
+    }
 }
+console.log(ingredientesIn);
+    const nomeInput = nome.value;
+    const valorInput = valor.value;
+    const fotoInput = foto.value;
+    const tabelaNutricionalInput = tabela_nutricional.value;
+    const quantidadeInput = quantidade.value;
+    const descricaoInput = descricao.value;
+    // const categoriasInput = categoriasIn
+    // const ingredientesInput = ingredientesIn
 
-
-cadastrar.addEventListener('click', ()=>{
-
-    const nomeInput = nome.value
-    const valorInput = valor.value
-    const fotoInput = foto.value
-    const tabelaNutricionalInput = tabela_nutricional.value
-    const quantidadeInput = quantidade.value
-    const descricaoInput = descricao.value
-    const categoriaInput = categoria.value
-    const ingredientesInput = ingredientes.value
     
 
-    const insert ={
+    let insert = {
         nome: nomeInput,
         valor: valorInput,
         foto: fotoInput,
-        tabela_nutricional:tabelaNutricionalInput,
-        quantidade: quantidadeInput,       
+        tabela_nutricional: tabelaNutricionalInput,
+        quantidade: quantidadeInput,
         descricao: descricaoInput,
-        categoria: categoriaInput,
-        ingredientes: ingredientesInput
-        
-    }
-    postProduto(insert)
-    window.location.href = '../telaHome/produtos.html'
-})
+        categorias: categoriasIn, // Renomeado para categoriasInput
+        ingredientes: ingredientesIn // Renomeado para ingredientesInput
+    };
 
+    console.log(insert);
 
-const teste = async() =>{
-    const cat = await getCategorias()
-    const ingr = await getIngredientes()
-    console.log(cat);
-    
-    cat.forEach(element => {
-        let categoria = criarCategoria(element)
-        categorias.append(categoria)
+    postProduto(insert);
+    // window.location.href = '../telaHome/produtos.html';
+});
+
+const inicializarSelects = async () => {
+    const categoriasArray = await getCategorias();
+    const ingredientesArray = await getIngredientes();
+
+    categoriasArray.forEach(element => {
+        let categoria = criarCategoria(element);
+        categorias.append(categoria);
     });
-    ingr.forEach(ele=>{
-        let ingrediente = criarIngrediente(ele)
-        ingredientes.append(ingrediente)
-    })
-}
 
-teste()
+    ingredientesArray.forEach(ele => {
+        let ingrediente = criarIngrediente(ele);
+        ingredientes.append(ingrediente);
+    });
+};
+
+inicializarSelects();

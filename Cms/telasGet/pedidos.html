@@ -29,6 +29,8 @@
     <title>Pedidos</title>
 </head>
 <body>
+  
+  <a href="../telaHome/telaHome.html">Voltar</a>
 
   <div>
     <div class="">
@@ -40,27 +42,24 @@
 
         <h1 class="fixed top-[60px] left-[130px] font-fontee font-bold">Dados do Cliente</h1>
 
-        <div class="fixed pl-[50px] pt-[100px] ">
-            <p class="m-6">Nome:</p>
-            <p class="m-6">E-mail:</p>
-            <p class="m-6">Número:</p>
-            <p class="m-6">Endereço de entrega:</p>
-            <p class="m-6">Forma de pagamento:</p>
-            <p class="m-6">Troco:</p>
-            <p class="m-6">Promoção/Cupom:</p>
-        </div>
+        <div class="">
+          <input type="text" class="m-6" placeholder="Nome:">
+          <input type="email" class="m-6" placeholder="E-mail:">
+          <input type="tel" class="m-6" placeholder="Número:">
+          <input type="text" class="m-6" placeholder="Endereço de entrega:">
+          <select class="m-6">
+              <option value="" disabled selected>Forma de pagamento:</option>
+              <option value="credito">Cartão de Crédito</option>
+              <option value="debito">Cartão de Débito</option>
+              <option value="pix">PIX</option>
+          </select>
+          <input type="text" class="m-6" placeholder="Troco:">
+          <input type="text" class="m-6" placeholder="Promoção/Cupom:">
+          <textarea placeholder="Descrição do pedido:"></textarea>
+      </div>
 
-        <div class="pl-[400px] pt-[40px]">
-            <img src="../img/produto.png" alt="Foto do produto">
-            <p class="font-bold">ID do produto: </p>
-            <p class="pt-[30px]">X Sem Tomate</p>
-            <p>X Sem Alface</p>
-        </div>
-
-        <div class=" pl-[400px] pt-[50px]">
-            <p>Descrição do pedido:</p>
-            <div class=" w-[280px] h-[70px] rounded-[25px] bg-white drop-shadow-lg"></div>
-        </div>
+        
+        
         
 
 

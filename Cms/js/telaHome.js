@@ -17,7 +17,7 @@ let id = localStorage.getItem('id')
 let controle = await getUsuario(id)
 console.log(controle);
 
-if (controle[0].cargo == "Atendente") {
+if (controle[0].cargo == "Cozinheiro") {
     let cont = document.getElementById('controle')
 
     let h = document.createElement('hr')
@@ -63,9 +63,9 @@ if (controle[0].cargo == "Gerente") {
     h3.classList.add('border-black', 'mt-[15px]', 'w-[80px]')
 
     let link3 = document.createElement('a')
-    link3.href = '../telaHome/produtos.html'
+    link3.href = '../telaHome/clientes.html'
     link3.classList.add('shadow-pop')
-    link3.textContent = 'Produtos'
+    link3.textContent = 'Clientes'
 
     cont.append(h, link, h2, link2, h3, link3)
 
