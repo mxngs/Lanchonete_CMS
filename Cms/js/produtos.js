@@ -1,13 +1,13 @@
 'use strict';
 async function getProduto() {
-    const url = 'http://localhost:8080/v1/lanchonete/produtos'
+    const url = 'https://lanchonete-backend.onrender.com/v1/lanchonete/produtos'
     const response = await fetch(url)
     const data = await response.json()
     return data.produtos
 }
 async function deleteProduto(id) {
     try {
-        await fetch(`http://localhost:8080/v1/lanchonete/produto/${id}`, {
+        await fetch(`https://lanchonete-backend.onrender.com/v1/lanchonete/produto/${id}`, {
             method: 'DELETE'
         })
         console.log("Produto excluído com sucesso")

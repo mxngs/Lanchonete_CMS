@@ -1,13 +1,13 @@
 'use strict';
 async function getPedidos(){
-    const url = 'http://localhost:8080/v1/lanchonete/pedidos'
+    const url = 'https://lanchonete-backend.onrender.com/v1/lanchonete/pedidos'
     const response = await fetch(url)
     const data = await response.json()
     console.log(data);
     return data.pedidos
 }
 async function getPedido(id){
-    const url = `http://localhost:8080/v1/lanchonete/pedidos/${id}`
+    const url = `https://lanchonete-backend.onrender.com/v1/lanchonete/pedidos/${id}`
     const response = await fetch(url)
     const data = await response.json()
     return data.pedido
